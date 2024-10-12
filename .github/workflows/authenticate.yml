@@ -13,30 +13,30 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  env:
-    DJANGO_SECRET_KEY: ${{ secret.DJANGO_SECRET_KEY }}
+    env:
+      DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}  # Corrected from 'secret' to 'secrets'
 
-  steps:
-    # Step 1: Checkout the code
-    - name: Checkout code
-      uses: actions/checkout@v2
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Step 2: Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    # Step 3: Install dependencies
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    # Step 4: Run migrations
-    - name: Run migrations
-      run: python manage.py migrate
+      # Step 4: Run migrations
+      - name: Run migrations
+        run: python manage.py migrate
 
-    # Step 5: Run Django tests
-    - name: Run tests
-      run: python manage.py test
+      # Step 5: Run Django tests
+      - name: Run tests
+        run: python manage.py test
