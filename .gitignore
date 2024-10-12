@@ -136,3 +136,17 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Static and media files
+staticfiles/
+media/
+
+# Database (if you're using SQLite)
+db.sqlite3
+
+# Django secret keys and local settings (if you have separate settings for production)
+.env
+.DS_Store
+
+# Migrations
+**/migrations/*
